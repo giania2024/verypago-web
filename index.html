@@ -123,9 +123,35 @@
   </form>
 </section>
 
+<style>
+#whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+#whatsapp-button:hover {
+  transform: scale(1.1);
+}
+#whatsapp-button img {
+  width: 32px;
+  height: 32px;
+}
+</style>
+
 <a id="whatsapp-button" href="https://wa.me/51982141988" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
 </a>
+
 
 
 <footer>
