@@ -1,4 +1,5 @@
-/* ==== GLOBAL STYLES ==== */
+
+/* ==== RESET & GLOBAL ==== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,61 +7,62 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background: #f7f7f7;
+  background-color: #f7f7f7;
   color: #333;
   line-height: 1.6;
-  scroll-behavior: smooth;
 }
 img {
   max-width: 100%;
   height: auto;
 }
+a {
+  text-decoration: none;
+}
 
-/* ==== HEADER ==== */
-.header {
+/* ==== HEADER HERO ==== */
+.hero {
   background: linear-gradient(135deg, #5b2d90, #9c27b0);
   color: white;
-  text-align: center;
-  padding: 100px 20px;
-}
-.logo-container {
-  background: white;
-  display: inline-flex;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 220px;
-  height: 220px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
-  border: 2px solid #eeeeee;
+  text-align: center;
 }
-.logo {
-  width: 160px;
-}
-.header h1 {
+.hero-content h1 {
   font-size: 2.8em;
   margin-bottom: 15px;
 }
-.header p {
+.hero-content p {
   font-size: 1.4em;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+}
+.hero-image img {
+  margin-top: 30px;
+  max-width: 320px;
 }
 
 /* ==== BUTTONS ==== */
 .btn-primary {
-  display: inline-block;
-  padding: 15px 30px;
-  background: #25d366;
+  background-color: #25d366;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  padding: 12px 24px;
   border-radius: 8px;
-  text-decoration: none;
   transition: background 0.3s ease;
 }
 .btn-primary:hover {
-  background: #1ebe5d;
+  background-color: #1ebe5d;
+}
+
+/* ==== LOGO ==== */
+.logo-section {
+  text-align: center;
+  padding: 30px 0;
+  background-color: white;
+}
+.logo-section img {
+  height: 100px;
 }
 
 /* ==== SECTIONS ==== */
@@ -70,30 +72,29 @@ img {
   margin: auto;
   text-align: center;
 }
-.section-title {
+.section h2 {
   color: #5b2d90;
   font-size: 2em;
   margin-bottom: 20px;
 }
 .section-description {
   font-size: 1.1em;
-  max-width: 600px;
-  margin: auto;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
 }
 
-/* ==== CARDS ==== */
+/* ==== CARDS & ICONS ==== */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-top: 30px;
 }
 .card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px;
   width: 280px;
   text-align: center;
   transition: transform 0.3s ease;
@@ -101,15 +102,36 @@ img {
 .card:hover {
   transform: translateY(-5px);
 }
+.card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
 
-/* ==== FORM ==== */
+/* ==== PASOS FUNCIONAMIENTO ==== */
+.pasos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.paso {
+  max-width: 300px;
+  text-align: center;
+}
+.paso img {
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* ==== FORMULARIO ==== */
 .contact-form {
   background: white;
   padding: 30px;
   border-radius: 10px;
   max-width: 500px;
   margin: 30px auto 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 .contact-form input,
 .contact-form select,
@@ -140,7 +162,7 @@ img {
   height: 60px;
   background-color: #25d366;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,13 +189,17 @@ img {
 
 /* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
-  .header h1 {
+  .hero-content h1 {
     font-size: 2em;
   }
-  .header p {
+  .hero-content p {
     font-size: 1.1em;
   }
   .card {
     width: 100%;
+  }
+  .pasos-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
