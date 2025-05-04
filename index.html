@@ -1,176 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VeryPago - Protege tus cobros móviles</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {box-sizing: border-box; margin: 0; padding: 0;}
-    body {font-family: 'Roboto', sans-serif; background: #f7f7f7; color: #333; line-height: 1.6;}
-    header {background: linear-gradient(rgba(91, 45, 144, 0.8), rgba(91, 45, 144, 0.7)), url('img/foto-pagina.jpg') center/cover no-repeat; color: white; text-align: center; padding: 100px 20px;}
-    header img {width: 120px; margin-bottom: 20px;}
-    header h1 {font-size: 2.5em; margin-bottom: 10px;}
-    header p {font-size: 1.2em; margin-bottom: 30px;}
-    .cta-button {padding: 15px 30px; background: #25d366; color: white; font-size: 18px; border-radius: 8px; text-decoration: none; font-weight: bold;}
-    
-    section {padding: 60px 20px; max-width: 1200px; margin: auto;}
-    h2 {text-align: center; color: #5b2d90; margin-bottom: 20px;}
-    .benefits, .plans {display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;}
-    .card {background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 20px; width: 280px; text-align: center;}
-    .card img {width: 80px; margin-bottom: 15px;}
-    .steps {text-align: center; margin-top: 40px;}
-    .steps li {margin: 15px 0;}
-    
-    form {background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 30px;}
-    input, select, button {width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc;}
-    button {background: #5b2d90; color: white; font-weight: bold; cursor: pointer;}
-
-    #whatsapp-button {position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px; border-radius: 50%; font-size: 28px; text-align: center; text-decoration: none; box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1000;}
-
-    footer {background: #333; color: white; text-align: center; padding: 20px; font-size: 0.9em; margin-top: 40px;}
-  </style>
+  <meta name="description" content="VeryPago es un dispositivo antifraude para cobros móviles en negocios del Perú. Protege, valida y agiliza tus ventas." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in {
-  animation: fadeIn 1s ease-out forwards;
-  opacity: 0;
-}
-</style>
-
-<header style="background: linear-gradient(135deg, #5b2d90, #9c27b0); color: white; text-align: center; padding: 100px 20px;">
-  <div style="background: white; display: inline-flex; align-items: center; justify-content: center; width: 220px; height: 220px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); margin-bottom: 20px; border: 2px solid #eeeeee;">
-    <img src="img/logo.png" alt="Logo VeryPago" style="width: 160px;">
-  </div>
-  <h1 style="font-size: 2.8em; margin-bottom: 15px;">Protege tus cobros móviles</h1>
-  <p style="font-size: 1.4em; margin-bottom: 30px;">Cobra seguro. Cobra rápido. Con VeryPago.</p>
-  <a href="#contacto" style="padding: 15px 30px; background: #25d366; color: white; border-radius: 8px; font-weight: bold; font-size: 18px; text-decoration: none;">¡Quiero VeryPago!</a>
-</header>
-
-
-
-<section>
-  <h2>¿Qué es VeryPago?</h2>
-  <p style="text-align:center;">VeryPago es un visor inteligente que valida tus cobros móviles en tiempo real. Evita fraudes, errores y acelera la atención en tu negocio.</p>
-</section>
-
-<section>
-  <h2>Beneficios</h2>
-  <div class="benefits">
-    <div class="card">
-      <img src="https://img.icons8.com/ios-filled/100/5b2d90/security-checked.png" alt="Fraude">
-      <h3>Evita Fraudes</h3>
-      <p>Confirma pagos reales al instante y protege tu negocio.</p>
+  <header class="header">
+    <div class="logo-container">
+      <img src="img/logo.png" alt="Logo VeryPago" class="logo" />
     </div>
-    <div class="card">
-      <img src="https://img.icons8.com/ios-filled/100/5b2d90/clock--v1.png" alt="Velocidad">
-      <h3>Recibe Pagos Rápido</h3>
-      <p>Validación inmediata sin depender del celular.</p>
+    <h1>Protege tus cobros móviles</h1>
+    <p>Cobra seguro. Cobra rápido. Con VeryPago.</p>
+    <a href="#contacto" class="btn-primary">¡Quiero VeryPago!</a>
+  </header>
+
+  <section class="section" data-aos="fade-up">
+    <h2 class="section-title">¿Qué es VeryPago?</h2>
+    <p class="section-description">VeryPago es un visor inteligente que valida tus cobros móviles en tiempo real. Evita fraudes, errores y acelera la atención en tu negocio.</p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 class="section-title">Beneficios</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/100/5b2d90/security-checked.png" alt="Seguridad" />
+        <h3>Evita Fraudes</h3>
+        <p>Confirma pagos reales al instante y protege tu negocio.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/100/5b2d90/clock--v1.png" alt="Velocidad" />
+        <h3>Recibe Pagos Rápido</h3>
+        <p>Validación inmediata sin depender del celular.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/100/5b2d90/growth.png" alt="Crecimiento" />
+        <h3>Más Clientes, Menos Errores</h3>
+        <p>Mejora tu atención y fideliza a tus clientes.</p>
+      </div>
     </div>
-    <div class="card">
-      <img src="https://img.icons8.com/ios-filled/100/5b2d90/growth.png" alt="Clientes">
-      <h3>Más Clientes, Menos Errores</h3>
-      <p>Mejora tu atención y fideliza a tus clientes.</p>
+  </section>
+
+  <section class="section" data-aos="fade-up">
+    <h2 class="section-title">¿Cómo funciona?</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>1️⃣ Instalación</h3>
+        <p>Instalamos el dispositivo VeryPago en tu negocio.</p>
+      </div>
+      <div class="card">
+        <h3>2️⃣ Conexión</h3>
+        <p>Se conecta automáticamente a tu app de cobros.</p>
+      </div>
+      <div class="card">
+        <h3>3️⃣ Confirmación</h3>
+        <p>Verás monto, nombre y hora de cada pago al instante.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2>¿Cómo funciona?</h2>
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
-    
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-      <h3 style="color: #5b2d90;">1️⃣ Instalación</h3>
-      <p>Instalamos el dispositivo VeryPago en tu negocio.</p>
+  <section class="section" data-aos="fade-up">
+    <h2 class="section-title">Planes y Precios</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Plan Básico</h3>
+        <p><strong>Activación:</strong> S/ 100</p>
+        <p><strong>Servicio:</strong> S/ 1 diario prepago mensual</p>
+      </div>
+      <div class="card">
+        <h3>Plan Premium</h3>
+        <p><strong>Activación:</strong> S/ 150</p>
+        <p><strong>Servicio:</strong> S/ 1.50 diario</p>
+        <p>Incluye soporte prioritario y reemplazo express.</p>
+      </div>
     </div>
+  </section>
 
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-      <h3 style="color: #5b2d90;">2️⃣ Conexión</h3>
-      <p>Se conecta automáticamente a tu app de cobros.</p>
-    </div>
+  <section class="section" id="contacto" data-aos="fade-up">
+    <h2 class="section-title">Contáctanos</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre completo" required />
+      <input type="tel" placeholder="Número de WhatsApp" required />
+      <input type="text" placeholder="Ciudad o distrito" required />
+      <select required>
+        <option value="">Selecciona tu plan</option>
+        <option value="basico">Plan Básico</option>
+        <option value="premium">Plan Premium</option>
+      </select>
+      <button type="submit" class="btn-primary">Enviar Solicitud</button>
+    </form>
+  </section>
 
-    <div style="background: white; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-      <h3 style="color: #5b2d90;">3️⃣ Confirmación</h3>
-      <p>Verás monto, nombre y hora de cada pago al instante.</p>
-    </div>
+  <a id="whatsapp-button" href="https://wa.me/51982141988" target="_blank">
+    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp" />
+  </a>
 
-  </div>
-</section>
+  <footer class="footer">
+    &copy; 2025 VeryPago. Todos los derechos reservados.
+  </footer>
 
-
-<section>
-  <h2>Planes y Precios</h2>
-  <div class="plans">
-    <div class="card">
-      <h3>Plan Básico</h3>
-      <p><strong>Activación:</strong> S/ 100</p>
-      <p><strong>Servicio:</strong> S/ 1 diario prepago mensual</p>
-    </div>
-    <div class="card">
-      <h3>Plan Premium</h3>
-      <p><strong>Activación:</strong> S/ 150</p>
-      <p><strong>Servicio:</strong> S/ 1.50 diario</p>
-      <p>Incluye soporte prioritario y reemplazo express.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <h2>Contáctanos</h2>
-  <form>
-    <input type="text" placeholder="Nombre completo" required>
-    <input type="tel" placeholder="Número de WhatsApp" required>
-    <input type="text" placeholder="Ciudad o distrito" required>
-    <select required>
-      <option value="">Selecciona tu plan</option>
-      <option value="basico">Plan Básico</option>
-      <option value="premium">Plan Premium</option>
-    </select>
-    <button type="submit">Enviar Solicitud</button>
-  </form>
-</section>
-
-<style>
-#whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  transition: transform 0.2s ease;
-}
-#whatsapp-button:hover {
-  transform: scale(1.1);
-}
-#whatsapp-button img {
-  width: 32px;
-  height: 32px;
-}
-</style>
-
-<a id="whatsapp-button" href="https://wa.me/51982141988" target="_blank">
-  <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
-</a>
-
-
-
-<footer>
-  &copy; 2025 VeryPago. Todos los derechos reservados.
-</footer>
-
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
