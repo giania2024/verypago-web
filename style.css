@@ -1,68 +1,78 @@
 
 body {
-  font-family: 'Inter', sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f7f7f7;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
   color: #333;
 }
 .hero {
-  background: linear-gradient(135deg, #5b2d90, #9c27b0);
+  background: linear-gradient(135deg, #5b2d90, #6c4dc3);
   color: white;
-  padding: 60px 20px;
   text-align: center;
+  padding: 60px 20px;
 }
-.hero-image img {
-  max-width: 320px;
+.hero-content h1 {
+  font-size: 2.5em;
+  margin: 0 0 10px;
+}
+.hero-content p {
+  font-size: 1.2em;
+}
+.btn {
   margin-top: 20px;
-}
-.btn-primary {
   display: inline-block;
-  margin-top: 20px;
+  padding: 14px 28px;
   background: #25d366;
   color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
   text-decoration: none;
+  border-radius: 8px;
   font-weight: bold;
 }
-.section {
-  padding: 60px 20px;
+.hero-image {
+  max-width: 300px;
+  margin: 30px auto 0;
+  display: block;
+}
+.logo-section {
+  text-align: center;
+  padding: 30px 20px;
+}
+.logo {
+  max-width: 140px;
+}
+.intro, .funciona {
+  padding: 40px 20px;
   text-align: center;
 }
-.card-container, .pasos-container {
+.intro h2, .funciona h2 {
+  color: #5b2d90;
+}
+.beneficios {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
-.card, .paso {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  width: 280px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.item {
+  max-width: 200px;
 }
-.contact-form {
-  max-width: 400px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
+.item img {
+  width: 60px;
 }
-.contact-form input, .contact-form select, .contact-form button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+.pasos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
-#whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+.paso img {
+  max-width: 120px;
 }
-.footer {
-  background: #333;
-  color: white;
+footer {
   text-align: center;
   padding: 20px;
+  background: #f2f2f2;
+  font-size: 0.9em;
 }
