@@ -1,1 +1,68 @@
-body { font-family: sans-serif; background: #f0f0f0; color: #333; padding: 2em; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #333;
+}
+.hero {
+  background: linear-gradient(135deg, #5b2d90, #9c27b0);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 320px;
+  margin-top: 20px;
+}
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  background: #25d366;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+.card-container, .pasos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.card, .paso {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.contact-form {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+.contact-form input, .contact-form select, .contact-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+#whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
