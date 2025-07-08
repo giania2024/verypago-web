@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VeryPago - Recarga</title>
+  <script src="https://unpkg.com/paho-mqtt/mqttws31.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    .container h2 {
+      margin-top: 0;
+      color: #0072ff;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0072ff;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #005fd1;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #eaf6ff;
+      border-left: 4px solid #0072ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>VeryPago - Recarga y Consulta</h2>
+    
+    <label for="deviceId">ID del dispositivo:</label>
+    <input type="text" id="deviceId" placeholder="Ej: 123456789012" required />
+
+    <button onclick="consultarSaldo()">Consultar saldo</button>
+    <div class="result" id="resultadoConsulta" style="display: none;"></div>
+
+    <hr />
+
+    <label for="modo">Modo de recarga:</label>
+    <select id="modo" onchange="ajustarValorPorDefecto()">
+      <option value="dias">Por días</option>
+      <option value="validaciones">Por validaciones</option>
+    </select>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" value="30" />
+
+    <button onclick="realizarRecarga()">Recargar</button>
+    <div class="result" id="resultadoRecarga" style="display: none;"></div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      SERVER: "wss://ec3af6142db94d14bfe52dd98e22f3df.s1.eu.hivemq.cloud:8884",
+      USERNAME: "gianprueba",
+      PASSWORD: "funciona173",
+      TOPICS: {
+        SALDO_REQUEST: "verypago/{deviceId}/request",
+        SALDO_RESPONSE: "verypago/{deviceId}/response",
+        RECARGA_SEND: "verypago/{deviceId}/recarga",
+        RECARGA_ACK: "verypago/{deviceId}/recarga_ack"
+      }
+    };
+
+    let client = null;
+    let conectado = false;
+    let deviceIdGlobal = "";
+
+    function conectarMQTT(deviceId, onReady) {
+      if (client && conectado) {
+        onReady();
+        return;
+      }
+
+      deviceIdGlobal = deviceId;
+      const clientId = "webClient_" + Math.random().toString(16).substr(2, 8);
+      const topicResponse = CONFIG.TOPICS.SALDO_RESPONSE.replace("{deviceId}", deviceId);
+      const topicAck = CONFIG.TOPICS.RECARGA_ACK.replace("{deviceId}", deviceId);
+
+      client = new Paho.MQTT.Client(CONFIG.SERVER.replace("wss://", ""), 8884, clientId);
+
+      client.onConnectionLost = () => {
+        console.log("❌ Conexión MQTT perdida");
+        conectado = false;
+      };
+
+      client.onMessageArrived = (message) => {
+        console.log("📥 Mensaje recibido:", message.destinationName, message.payloadString);
+        if (message.destinationName === topicResponse) {
+          document.getElementById("resultadoConsulta").innerText = `🔋 Saldo: ${message.payloadString}`;
+          document.getElementById("resultadoConsulta").style.display = "block";
+        } else if (message.destinationName === topicAck) {
+          document.getElementById("resultadoRecarga").innerText = message.payloadString;
+          document.getElementById("resultadoRecarga").style.display = "block";
+        }
+      };
+
+      client.connect({
+        useSSL: true,
+        userName: CONFIG.USERNAME,
+        password: CONFIG.PASSWORD,
+        onSuccess: () => {
+          console.log("✅ Conectado al broker");
+          conectado = true;
+          client.subscribe(topicResponse);
+          client.subscribe(topicAck);
+          onReady();
+        },
+        onFailure: (err) => {
+          alert("Error conectando al broker MQTT.");
+          console.error(err);
+        }
+      });
+    }
+
+    function ajustarValorPorDefecto() {
+      const modo = document.getElementById("modo").value;
+      document.getElementById("cantidad").value = (modo === "dias") ? 30 : 150;
+    }
+
+    function consultarSaldo() {
+      const deviceId = document.getElementById("deviceId").value.trim();
+      if (!deviceId) return alert("Ingresa un ID válido.");
+
+      conectarMQTT(deviceId, () => {
+        const topic = CONFIG.TOPICS.SALDO_REQUEST.replace("{deviceId}", deviceId);
+        client.send(topic, "request", 0, false);
+      });
+    }
+
+    function realizarRecarga() {
+      const deviceId = document.getElementById("deviceId").value.trim();
+      const modo = document.getElementById("modo").value;
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+      if (!deviceId || cantidad <= 0) return alert("Verifica el ID y la cantidad.");
+
+      conectarMQTT(deviceId, () => {
+        const topic = CONFIG.TOPICS.RECARGA_SEND.replace("{deviceId}", deviceId);
+        const payload = JSON.stringify({ modo, cantidad });
+        client.send(topic, payload, 0, false);
+      });
+    }
+  </script>
+</body>
+</html>
